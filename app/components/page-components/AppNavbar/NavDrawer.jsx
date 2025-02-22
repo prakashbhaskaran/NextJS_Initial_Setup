@@ -9,7 +9,7 @@ import AppBox from "@components/material-components/AppBox";
 import { FaWindowClose } from "react-icons/fa";
 import { usePathname } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
-import { cssStyle, customPalette } from "@constants/style";
+import { cssStyle, color } from "@constants/style";
 import AppLogo from "@components/page-components/AppLogo";
 import AppVstack from "@components/material-components/AppVstack";
 import AppText from "@components/material-components/AppText";
@@ -41,7 +41,7 @@ const NavDrawer = ({ open, handleClose }) => {
             <AppLogo
               imageSize="30px"
               handleClose={handleClose}
-              textSx={{ color: customPalette.global.white }}
+              textSx={{ color: color.global.white }}
             />
             <IconButton color="light" onClick={handleClose}>
               <FaWindowClose size={23} />
@@ -70,8 +70,8 @@ const NavDrawer = ({ open, handleClose }) => {
                         sx={{
                           padding: "0px",
                           color: pathname.includes(_?.link)
-                            ? customPalette.global.secondary
-                            : customPalette.global.primary,
+                            ? color.global.secondary
+                            : color.global.primary,
                         }}
                         size={"20px"}
                       >
@@ -81,8 +81,8 @@ const NavDrawer = ({ open, handleClose }) => {
                         sx={{
                           fontWeight: "600",
                           color: pathname.includes(_?.link)
-                            ? customPalette.global.secondary
-                            : customPalette.global.primary,
+                            ? color.global.secondary
+                            : color.global.primary,
                         }}
                         text={_?.label}
                       />

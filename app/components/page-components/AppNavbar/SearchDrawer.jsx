@@ -5,7 +5,7 @@ import AppLink from "../AppLink";
 import AppBox from "@components/material-components/AppBox";
 import { Card, debounce, IconButton, InputAdornment } from "@mui/material";
 import { FaWindowClose } from "react-icons/fa";
-import { cssStyle, lineClamp, customPalette } from "@constants/style";
+import { cssStyle, lineClamp, color } from "@constants/style";
 import AppInput from "@components/material-components/AppInput";
 import { IoSearch } from "react-icons/io5";
 import { useQuery } from "react-query";
@@ -61,7 +61,7 @@ const SearchDrawer = ({ open, handleClose }) => {
       >
         <AppLogo
           handleClose={handleClose}
-          textSx={{ color: customPalette.global.white }}
+          textSx={{ color: color.global.white }}
         />
 
         <IconButton color="light" onClick={handleClose}>
@@ -115,7 +115,7 @@ const SearchDrawer = ({ open, handleClose }) => {
                       boxShadow: "none",
                       "&:hover": {
                         background: cssStyle.mainColor,
-                        color: customPalette.global.white,
+                        color: color.global.white,
                       },
                     }}
                   >

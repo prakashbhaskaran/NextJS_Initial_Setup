@@ -7,10 +7,15 @@ import {
   getContrastRatio,
 } from "@mui/material";
 import { createContext, useState } from "react";
-import { cssStyle, customPalette } from "@constants/style";
+import { cssStyle, color } from "@constants/style";
+import { Quicksand } from "next/font/google";
 
 export const ThemeContext = createContext();
-
+const quicksand = Quicksand({
+  subsets: ["latin", "latin-ext", "vietnamese"],
+  weight: ["300", "400", "700", "500", "600"],
+  variable: "--quicksand-font",
+});
 const MaterialThemeProvider = ({ children }) => {
   const [dark, setDark] = useState(false);
   const handleDarkMode = () => {
@@ -21,38 +26,35 @@ const MaterialThemeProvider = ({ children }) => {
     palette: {
       mode: dark ? "dark" : "light",
       text: {
-        primary: customPalette.global.black,
+        primary: color.global.black,
       },
       primary: {
-        main: customPalette.global.black,
+        main: color.global.black,
       },
       secondary: {
-        main: customPalette.global.secondary,
+        main: color.global.secondary,
       },
       teritiary: {
-        main: customPalette.global.quaternary,
-        light: alpha(customPalette.global.quaternary, 0.5),
-        dark: alpha(customPalette.global.quaternary, 0.9),
+        main: color.global.quaternary,
+        light: alpha(color.global.quaternary, 0.5),
+        dark: alpha(color.global.quaternary, 0.9),
         contrastText:
-          getContrastRatio(
-            customPalette.global.quaternary,
-            customPalette.global.white
-          ) > 4.5
-            ? customPalette.global.quaternary
-            : customPalette.global.white,
+          getContrastRatio(color.global.quaternary, color.global.white) > 4.5
+            ? color.global.quaternary
+            : color.global.white,
       },
       light: {
-        main: customPalette.global.white,
-        light: alpha(customPalette.global.white, 0.5),
-        dark: alpha(customPalette.global.white, 0.9),
+        main: color.global.white,
+        light: alpha(color.global.white, 0.5),
+        dark: alpha(color.global.white, 0.9),
         contrastText:
-          getContrastRatio(
-            customPalette.global.white,
-            customPalette.global.white
-          ) > 4.5
-            ? customPalette.global.white
+          getContrastRatio(color.global.white, color.global.white) > 4.5
+            ? color.global.white
             : cssStyle.mainColor,
       },
+    },
+    typography: {
+      fontFamily: quicksand.style.fontFamily,
     },
     components: {},
   });

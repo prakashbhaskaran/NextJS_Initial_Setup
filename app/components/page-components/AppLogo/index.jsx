@@ -39,7 +39,7 @@ const AppLogo = ({
         />
       </AppBox> */}
       <AppText
-        text={"Store"}
+        text={"Logo"}
         sx={{
           fontWeight: "500",
           fontSize: { xs: "1.1rem", md: "1.3rem" },

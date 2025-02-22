@@ -1,4 +1,4 @@
-const customPalette = {
+const color = {
   global: {
     primary: "#22252b",
     secondary: "#53655c",
@@ -10,7 +10,7 @@ const customPalette = {
   },
 };
 const cssStyle = {
-  mainColor: customPalette.global.primary,
+  mainColor: color.global.primary,
   shadow: {
     bottom: "0 0.8px #d8d8d8",
   },
@@ -82,4 +82,4 @@ const lineClamp = (value = "2") => {
   };
 };
 
-export { materialStyle, cssStyle, lineClamp, customPalette };
+export { materialStyle, cssStyle, lineClamp, color };

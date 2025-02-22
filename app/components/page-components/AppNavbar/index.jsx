@@ -2,7 +2,7 @@
 import React, { useContext, useState } from "react";
 import AppBox from "@components/material-components/AppBox";
 import AppHstack from "@components/material-components/AppHstack";
-import { cssStyle, customPalette } from "@constants/style";
+import { cssStyle, color } from "@constants/style";
 import { Badge, IconButton } from "@mui/material";
 import AppContainer from "../AppContainer";
 import { ThemeContext } from "@providers/MaterialThemeProvider";
@@ -32,8 +32,8 @@ const AppNavbar = () => {
     setOpenSearch(true);
   };
   const is_home = pathname === "/";
-  let bgcolor = is_home ? customPalette.global.white : cssStyle.mainColor;
-  let color = is_home ? cssStyle.mainColor : customPalette.global.white;
+  let bgcolor = is_home ? color.global.white : cssStyle.mainColor;
+  let textcolor = is_home ? cssStyle.mainColor : color.global.white;
 
   return (
     <AppBox
@@ -56,12 +56,7 @@ const AppNavbar = () => {
       >
         <AppContainer>
           <AppHstack justifyContent="space-between">
-            <AppHstack width="20%">
-              <IconButton onClick={handleDrawerOpen}>
-                <GiHamburgerMenu color={color} size={23} />
-              </IconButton>
-            </AppHstack>
-            <AppHstack width="60%" justifyContent="center">
+            <AppHstack>
               <AppBox>
                 <AppLogo
                   image={
@@ -70,22 +65,27 @@ const AppNavbar = () => {
                       : "/logo-without-bg.png"
                   }
                   textSx={{
-                    color: color,
+                    color: textcolor,
                   }}
                   imageSize="30px"
                 />
               </AppBox>
             </AppHstack>
+            <AppHstack>
+              <IconButton onClick={handleDrawerOpen}>
+                <GiHamburgerMenu color={color} size={23} />
+              </IconButton>
+            </AppHstack>
 
-            <AppHstack gap="10px" justifyContent="end" width="20%">
+            {/* <AppHstack gap="10px" justifyContent="end" width="20%">
               <IconButton onClick={handleSearchOpen} sx={{ p: "0px" }}>
                 <IoSearch color={color} size={23} />
               </IconButton>
-            </AppHstack>
+            </AppHstack> */}
           </AppHstack>
         </AppContainer>
         <NavDrawer open={openDrawer} handleClose={handleDrawerClose} />
-        <SearchDrawer open={openSearch} handleClose={handleSearchClose} />
+        {/* <SearchDrawer open={openSearch} handleClose={handleSearchClose} /> */}
       </AppBox>{" "}
     </AppBox>
   );

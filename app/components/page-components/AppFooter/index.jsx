@@ -7,31 +7,27 @@ import AppHstack from "@components/material-components/AppHstack";
 import AppContainer from "@components/page-components/AppContainer";
 import AppLink from "../AppLink";
 import AppLogo from "../AppLogo";
-import { customPalette } from "@constants/style";
+import { color } from "@constants/style";
+import AppDivider from "@components/material-components/AppDivider";
 
 const AppFooter = () => {
+  const d = new Date();
+  let year = d.getFullYear();
   const links = [
     {
-      name: "LEGAL",
+      // name: "COMPANY",
       list: [
-        { name: "Privacy Policy", link: "/policies/privacy-policy" },
-        { name: "Shipping Policy", link: "/policies/shipping-policy" },
-        { name: "Terms and Conditions", link: "/termsandconditions" },
-      ],
-    },
-    {
-      name: "RESOURCES",
-      list: [
-        { name: "About", link: "/about-us" },
-        { name: "Contact", link: "/contact" },
+        { name: "About Us", link: "/about-us" },
+        { name: "History", link: "/history" },
+        { name: "Contact Us", link: "/contact-us" },
       ],
     },
   ];
   return (
-    <AppBox as="footer" sx={{ background: customPalette.global.primary }}>
+    <AppBox as="footer" sx={{ background: color.global.primary }}>
       <AppBox
         sx={{
-          px: "20px",
+          // px: "10px",
           py: "40px",
         }}
       >
@@ -43,48 +39,52 @@ const AppFooter = () => {
             }}
             gap={{ xs: "1rem", md: "initial" }}
             justifyContent={{ md: "space-between" }}
+            alignItems="start"
           >
-            <AppVstack width={{ xs: "100%", md: "initial", gap: "6px" }}>
+            <AppVstack width={{ xs: "100%", md: "initial", gap: "16px" }}>
               <AppBox>
                 <AppLogo
                   textSx={{
-                    fontSize: "1.2rem",
-                    color: customPalette.global.white,
+                    color: color.global.white,
                   }}
-                  imageSize="30px"
-                  image="/logo-without-bg.png"
-                  sx={{ gap: "6px" }}
                 />
               </AppBox>
+              <AppText
+                sx={{
+                  color: color.global.white,
+                  width: { xs: "auto", lg: "27em" },
+                }}
+                text={"Sentence"}
+              />
 
-              <AppText sx={{ color: customPalette.global.white }}>
-                © 2024. All Rights Reserved.
+              <AppText sx={{ color: color.global.white, mt: "2rem" }}>
+                © Company {year} , All rights reserved
               </AppText>
             </AppVstack>
 
             <AppHstack
-              gap={"1rem"}
+              gap={{ xs: "1rem", md: "10rem" }}
               flexDirection={{ xs: "column", md: "row" }}
               alignItems="start"
               width={{ xs: "100%", md: "initial" }}
             >
-              {links.map((item) => {
+              {links.map((item, index) => {
                 return (
                   <AppVstack
                     width={{ xs: "100%", md: "initial" }}
-                    key={item.name}
+                    key={item.name || index}
                     gap="10px"
                   >
                     <AppText
                       sx={{
                         fontWeight: "700",
-                        fontSize: "1.1rem",
-                        color: customPalette.global.white,
+                        fontSize: "1.2rem",
+                        color: color.global.white,
                       }}
                     >
-                      {item.name}
+                      {item?.name}
                     </AppText>
-                    <AppVstack gap="6px">
+                    <AppVstack gap="20px">
                       {item.list.map((_) => {
                         return (
                           <AppLink
@@ -92,7 +92,8 @@ const AppFooter = () => {
                             key={_.name}
                             text={_.name}
                             textSx={{
-                              color: customPalette.global.white,
+                              color: color.global.white,
+                              fontSize: "1rem",
 
                               "&:hover": {
                                 textDecoration: "underline",
@@ -107,6 +108,7 @@ const AppFooter = () => {
               })}
             </AppHstack>
           </AppHstack>
+          <AppDivider sx={{ mt: "27px" }} />
         </AppContainer>
       </AppBox>
     </AppBox>
