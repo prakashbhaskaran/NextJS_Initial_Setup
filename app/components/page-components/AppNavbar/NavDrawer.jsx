@@ -66,17 +66,6 @@ const NavDrawer = ({ open, handleClose }) => {
                     sx={{ width: "100%", height: "100%" }}
                   >
                     <AppHstack gap="6px" py="5px">
-                      <IconButton
-                        sx={{
-                          padding: "0px",
-                          color: pathname.includes(_?.link)
-                            ? color.global.secondary
-                            : color.global.primary,
-                        }}
-                        size={"20px"}
-                      >
-                        {_.icon}
-                      </IconButton>
                       <AppText
                         sx={{
                           fontWeight: "600",

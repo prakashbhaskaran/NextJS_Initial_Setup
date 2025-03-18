@@ -7,11 +7,6 @@ const makePostRequest = async (endpoint, body, config = {}) => {
   return data;
 };
 
-const makeShiprocketPostRequest = async (endpoint, body, config = {}) => {
-  const { data } = await shiprocketAxios().post(endpoint, body);
-  return data;
-};
-
 /* GET REQUEST */
 const makeGetRequest = async (endpoint, config = {}, params = {}) => {
   const { data } = await appAxios(config).get(endpoint, {
@@ -27,23 +22,10 @@ const makeGetRequest = async (endpoint, config = {}, params = {}) => {
   return data;
 };
 
-const makeShiprocketGetRequest = async (endpoint, config = {}, params = {}) => {
-  const { data } = await shiprocketAxios(config).get(endpoint, {
-    params: params,
-  });
-  return data;
-};
-
 /* DELETE REQUEST */
 const makeDeleteRequest = async (endpoint, config = {}) => {
   const { data } = await appAxios(config).delete(endpoint);
   return data;
 };
 
-export {
-  makePostRequest,
-  makeGetRequest,
-  makeDeleteRequest,
-  makeShiprocketPostRequest,
-  makeShiprocketGetRequest,
-};
+export { makePostRequest, makeGetRequest, makeDeleteRequest };

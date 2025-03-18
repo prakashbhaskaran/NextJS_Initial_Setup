@@ -12,11 +12,11 @@ const navbarLinks = {
 };
 
 const navDrawerLinks = () => {
-  return [{ label: "PRODUCTS", link: "/products", icon: <FaShoppingBag /> }];
+  return [{ label: "Home", link: "/", icon: <FaShoppingBag /> }];
 };
 const baseUrl =
   process.env.NODE_ENV === "production"
-    ? "https://store.com"
+    ? process.env.WEBSITE_URL
     : "http://localhost:3000";
 
 export { navbarLinks, baseUrl, navDrawerLinks };
